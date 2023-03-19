@@ -3,10 +3,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 extra["springCloudVersion"] = "2021.0.3"
 
 plugins {
-    id("org.springframework.boot") version "3.0.4"
-    id("io.spring.dependency-management") version "1.1.0"
-    kotlin("jvm") version "1.7.22"
-    kotlin("plugin.spring") version "1.7.22"
+    val kotlinVersion = "1.7.10"
+
+    id("org.springframework.boot") version "2.7.2"
+    id("io.spring.dependency-management") version "1.0.12.RELEASE"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version "1.6.21"
 }
 
 group = "com.dundung"
@@ -32,7 +34,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -52,7 +53,6 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "17"
     }
 }
-
 
 tasks.withType<Test> {
     useJUnitPlatform()

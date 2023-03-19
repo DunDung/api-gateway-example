@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pi-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: tybms
+          uri: http://localhost:8081
+          predicates:
+            - Host=tybms.co.kr
