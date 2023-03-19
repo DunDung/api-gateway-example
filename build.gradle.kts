@@ -46,14 +46,21 @@ dependencyManagement {
     }
 }
 
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "17"
+tasks {
+    compileKotlin {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "17"
+            javaParameters = true
+        }
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
+    compileTestKotlin {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "17"
+        }
+    }
+    test {
+        useJUnitPlatform()
+    }
 }
